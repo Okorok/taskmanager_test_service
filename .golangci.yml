@@ -1,0 +1,42 @@
+version: "2"
+run:
+  build-tags:
+    - integration
+linters:
+  default: none
+  enable:
+    - errcheck
+    - gochecknoinits
+    - gosec
+    - govet
+    - ineffassign
+    - makezero
+    - revive
+    - staticcheck
+    - unused
+    - whitespace
+  settings:
+    revive:
+      rules:
+        - name: var-naming
+          disabled: true
+  exclusions:
+    generated: lax
+    presets:
+      - comments
+      - common-false-positives
+      - legacy
+      - std-error-handling
+    paths:
+      - third_party$
+      - builtin$
+      - examples$
+formatters:
+  enable:
+    - gofumpt
+  exclusions:
+    generated: lax
+    paths:
+      - third_party$
+      - builtin$
+      - examples$
